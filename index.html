@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temuulen Baasankhuu - Resume</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-main: #202124;
+            --text-muted: #5f6368;
+            --btn-bg: #0eb1a5;
+            --btn-text: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e8eaed;
+            --text-muted: #9aa0a6;
+            --border-color: #3c4043;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .resume-card {
+            background-color: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            position: relative;
+        }
+
+        .left-col {
+            width: 200px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 auto 15px auto;
+        }
+
+        .student-id {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .btn-teal {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+
+        .btn-teal:hover {
+            opacity: 0.9;
+        }
+
+        .right-col {
+            flex-grow: 1;
+        }
+
+        h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .skill-item h3 {
+            font-size: 15px;
+            margin: 0 0 5px 0;
+        }
+
+        .skill-item p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .contact-info p {
+            margin: 2px 0 15px 0;
+            color: var(--text-muted);
+        }
+
+        .contact-info strong {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 2px;
+            font-size: 15px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        
+        body.dark-mode .btn-outline:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .footer-right {
+             position: absolute;
+             bottom: -25px;
+             right: 40px;
+             font-size: 12px;
+             color: var(--text-muted);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="resume-card">
+        <div class="profile-img">
+                <img src="profile.jpg" alt="Temka profile picture" style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover;">
+            </div>
+            <div class="student-id">Student: <strong>AU114021138</strong></div>
+            <button class="btn-teal" onclick="copyId()">copy student<br>ID</button>
+        </div>
+
+        <div class="right-col">
+            <h1>Temuulen Baasankhuu</h1>
+            <div class="subtitle">Freshman in Asia University of Taiwan class of 2025</div>
+
+            <div class="section-title">Personal Profile</div>
+            <p>Broad knowledge in both hardware and software related topics such as PC components, car engines, military weaponry, triple A video game structures, software tools like Blender, FLStudio.My Hobbies are Politics, Geo Politics, Alt Media, Military, Mechanical and Techical.</p>
+
+            <div class="section-title">Education</div>
+            <strong>Asia University of Taiwan</strong>
+            <p style="color: var(--text-muted); margin-top: 2px;">Freshman class of 2025 – Major: Computer Science and information technology</p>
+
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Retail worker</h3>
+                    <p>Communication skills in sales pitch and ability connect with any customer</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Computer and Programms</h3>
+                    <p>Wide range of beginner and Intermediete entries on various softwares ranging from Adobe tools to popular media creation softwares like FLstudio and Blender</p>
+                </div>
+            </div>
+
+            <div class="section-title">Experience</div>
+            <p>None for now</p>
+
+            <div class="section-title">Contact details</div>
+            <div class="contact-info">
+                <strong>Email</strong>
+                <p>temuulentt218653@gmail.com</p>
+                
+                <strong>the phone</strong>
+                <p>+97688715113 MGL</p>
+            </div>
+
+            <div class="actions">
+                <button class="btn-teal" style="width: auto;" onclick="window.print()">Print / Save as PDF</button>
+                <button class="btn-outline" onclick="toggleDarkMode()">Switching dark mode</button>
+                <div style="margin-left: auto; font-size: 12px; color: var(--text-muted);">HTML resume / editable</div>
+            </div>
+        </div>
+        
+        <div class="footer-right">Last updated: 3/25/2026</div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function copyId() {
+            navigator.clipboard.writeText("AU114001001");
+            alert("School number copied!");
+        }
+    </script>
+</body>
+</html>
