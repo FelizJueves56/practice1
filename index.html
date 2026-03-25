@@ -182,34 +182,39 @@
 </head>
 <body>
 
-    <div class="resume-card">
-        <div class="profile-img">
-    <img src="myphoto.jpg" alt="Temka profile picture" style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover;">
-</div>
-            <div class="student-id">Student: <strong>AU114021138</strong></div>
-            <button class="btn-teal" onclick="copyId()">copy student<br>ID</button>
+   <div class="resume-card">
+        <div class="left-col">
+            <div class="profile-img">
+                <img src="myphoto.jpg" alt="Profile picture" style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover;">
+            </div>
+            
+            <div class="left-text-container" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+                <p style="font-size: 13px; color: var(--text-muted); text-align: left; margin: 0;">Student ID:</p>
+                <p style="font-size: 13px; color: var(--text-main); font-weight: bold; text-align: left; margin: 0;">AU114021138</p>
+                <button class="btn-teal" onclick="copyId()" style="font-size: 12px; padding: 6px 10px;">copy student<br>ID</button>
+            </div>
         </div>
 
         <div class="right-col">
             <h1>Temuulen Baasankhuu</h1>
-            <div class="subtitle">Freshman in Asia University of Taiwan class of 2025</div>
+            <div class="subtitle">Asia University freshman – Class of 2025</div>
 
             <div class="section-title">Personal Profile</div>
-            <p>Broad knowledge in both hardware and software related topics such as PC components, car engines, military weaponry, triple A video game structures, software tools like Blender, FLStudio.My Hobbies are Politics, Geo Politics, Alt Media, Military, Mechanical and Techical.</p>
+            <p>Broad knowledge in both hardware and software related topics such as PC components, car engines, military weaponry, triple A video game structures, software tools like Blender, FLStudio. My Hobbies are Politics, Geo Politics, Alt Media, Military, Mechanical and Technical.</p>
 
             <div class="section-title">Education</div>
             <strong>Asia University of Taiwan</strong>
-            <p style="color: var(--text-muted); margin-top: 2px;">Freshman class of 2025 – Major: Computer Science and information technology</p>
+            <p style="color: var(--text-muted); margin-top: 2px;">Freshman class of 2025 – Major: Computer Science and Information Technology</p>
 
             <div class="section-title">Skills</div>
             <div class="skills-grid">
                 <div class="skill-item">
                     <h3>Retail worker</h3>
-                    <p>Communication skills in sales pitch and ability connect with any customer</p>
+                    <p>Communication skills in sales pitch and ability to connect with any customer</p>
                 </div>
                 <div class="skill-item">
-                    <h3>Computer and Programms</h3>
-                    <p>Wide range of beginner and Intermediete entries on various softwares ranging from Adobe tools to popular media creation softwares like FLstudio and Blender</p>
+                    <h3>Computer and Programs</h3>
+                    <p>Wide range of beginner and intermediate entries on various softwares ranging from Adobe tools to popular media creation softwares like FLStudio and Blender</p>
                 </div>
             </div>
 
@@ -221,13 +226,13 @@
                 <strong>Email</strong>
                 <p>temuulentt218653@gmail.com</p>
                 
-                <strong>the phone</strong>
-                <p>+97688715113 MGL</p>
+                <strong>Phone</strong>
+                <p>+976 8871 5113 (MGL)</p>
             </div>
 
             <div class="actions">
                 <button class="btn-teal" style="width: auto;" onclick="window.print()">Print / Save as PDF</button>
-                <button class="btn-outline" onclick="toggleDarkMode()">Switching dark mode</button>
+                <button class="btn-outline" onclick="toggleDarkMode()">Switch dark mode</button>
                 <div style="margin-left: auto; font-size: 12px; color: var(--text-muted);">HTML resume / editable</div>
             </div>
         </div>
