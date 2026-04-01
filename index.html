@@ -5,237 +5,321 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temuulen Baasankhuu - Resume</title>
     <style>
+        /* ==============================
+           THEME AND RESET
+           Replicates the design from image_14.png
+           ============================== */
         :root {
-            --bg-color: #f4f6f8;
-            --card-bg: #ffffff;
-            --text-main: #202124;
-            --text-muted: #5f6368;
-            --btn-bg: #0eb1a5;
-            --btn-text: #ffffff;
-            --border-color: #e0e0e0;
+            --sidebar-bg: #4c4d4f; /* Matches the target sidebar */
+            --sidebar-text: #ffffff;
+            --main-bg: #ffffff;
+            --main-text: #202124;
+            --accent-border: #e0e0e0;
+            --accent-highlight: #d3d3d3; /* for headers/lines */
         }
 
+        /* Dark mode settings for this specific layout */
         body.dark-mode {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #e8eaed;
-            --text-muted: #9aa0a6;
-            --border-color: #3c4043;
+            --sidebar-bg: #3c4043;
+            --main-bg: #121212;
+            --main-text: #e8eaed;
+            --accent-border: #3c4043;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Times New Roman', Times, serif; /* Serifs match target */
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px 0;
+            color: var(--main-text);
             display: flex;
             justify-content: center;
-            padding: 40px 20px;
-            margin: 0;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s;
         }
 
-        .resume-card {
-            background-color: var(--card-bg);
-            max-width: 800px;
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            padding: 40px;
-            display: flex;
-            gap: 30px;
+        /* The main two-column grid */
+        .resume-container {
+            display: grid;
+            grid-template-columns: 280px 1fr; /* Fixed sidebar, flexible content */
+            width: 1000px;
+            max-width: 100%;
+            background-color: var(--main-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
             position: relative;
         }
 
-        .left-col {
-            width: 200px;
-            flex-shrink: 0;
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-            border-radius: 12px;
+        /* ==============================
+           SIDEBAR STYLES (DARK)
+           ============================== */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 40px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            margin: 0 auto 15px auto;
         }
 
-        .student-id {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* Target profile is round */
+            overflow: hidden;
+            border: 4px solid var(--sidebar-text);
+            margin-bottom: 30px;
         }
 
-        .btn-teal {
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
+        .profile-img-container img {
             width: 100%;
-            transition: opacity 0.2s;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .btn-teal:hover {
-            opacity: 0.9;
+        .sidebar-section {
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: left;
         }
 
-        .right-col {
-            flex-grow: 1;
-        }
-
-        h1 {
-            margin: 0 0 5px 0;
-            font-size: 24px;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
+        .sidebar-title {
             font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .section-title {
             font-weight: bold;
-            font-size: 15px;
-            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 10px;
+            border-bottom: 1px solid var(--sidebar-text);
+            padding-bottom: 5px;
         }
 
-        p {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: var(--text-main);
+        .sidebar p, .sidebar li {
+            font-size: 13px;
+            margin: 5px 0;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
         }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .skill-item h3 {
-            font-size: 15px;
-            margin: 0 0 5px 0;
-        }
-
-        .skill-item p {
-            color: var(--text-muted);
+        
+        .sidebar ul {
+            padding-left: 15px;
             margin: 0;
         }
 
-        .contact-info p {
-            margin: 2px 0 15px 0;
-            color: var(--text-muted);
+        /* ==============================
+           MAIN CONTENT STYLES (WHITE)
+           ============================== */
+        .main-content {
+            padding: 40px 60px;
         }
 
-        .contact-info strong {
-            display: block;
-            color: var(--text-main);
-            margin-bottom: 2px;
-            font-size: 15px;
-        }
-
-        .actions {
+        /* Clean header matching target */
+        .header-section {
+            border-bottom: 2px solid var(--accent-highlight);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .name-and-title h1 {
+            font-size: 36px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .name-and-title .job-title {
+            font-size: 14px;
+            color: var(--sidebar-bg); /* Use sidebar color as accent */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .contact-block {
+            text-align: right;
+            font-size: 12px;
+            color: #5f6368;
+            line-height: 1.5;
+        }
+
+        .section-title-main {
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-top: 30px;
-            align-items: center;
+            margin-bottom: 15px;
+            color: var(--main-text);
         }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(0,0,0,0.05);
+        /* Work Experience entries */
+        .experience-entry {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: flex-start;
         }
         
-        body.dark-mode .btn-outline:hover {
-            background-color: rgba(255,255,255,0.05);
+        .experience-meta {
+            text-align: right;
         }
 
+        .experience-meta strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+        
+        .experience-meta p {
+            font-size: 12px;
+            color: #5f6368;
+            margin: 2px 0 0 0;
+        }
+
+        .experience-details h3 {
+            font-size: 14px;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+        }
+        
+        .experience-details ul {
+            font-size: 13px;
+            line-height: 1.6;
+            padding-left: 20px;
+            margin: 0;
+            color: #202124;
+        }
+
+        /* Skill list layout matching target */
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill-list li {
+            background-color: #f4f6f8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #5f6368;
+            text-transform: uppercase;
+            border: 1px solid var(--accent-border);
+        }
+
+        /* Copy/PDF buttons, kept from previous iteration */
+        .actions-bar {
+            margin-top: 40px;
+            border-top: 2px solid var(--accent-highlight);
+            padding-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-target {
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Footer positioning */
         .footer-right {
-             position: absolute;
-             bottom: -25px;
-             right: 40px;
-             font-size: 12px;
-             color: var(--text-muted);
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.5); /* on sidebar background */
         }
-
     </style>
 </head>
 <body>
-
-   <div class="resume-card">
-        <div class="left-col">
-            <div class="profile-img">
-                <img src="myphoto.jpg" alt="Profile picture" style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover;">
+    <div class="resume-container">
+        <aside class="sidebar">
+            <div class="profile-img-container">
+                <img src="myphoto.jpg" alt="Profile Picture">
             </div>
             
-            <div class="left-text-container" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
-                <p style="font-size: 13px; color: var(--text-muted); text-align: left; margin: 0;">Student ID:</p>
-                <p style="font-size: 13px; color: var(--text-main); font-weight: bold; text-align: left; margin: 0;">AU114021138</p>
-                <button class="btn-teal" onclick="copyId()" style="font-size: 12px; padding: 6px 10px;">copy student<br>ID</button>
-            </div>
-        </div>
-
-        <div class="right-col">
-            <h1>Temuulen Baasankhuu</h1>
-            <div class="subtitle">Asia University freshman – Class of 2025</div>
-
-            <div class="section-title">Personal Profile</div>
-            <p>Broad knowledge in both hardware and software related topics such as PC components, car engines, military weaponry, triple A video game structures, software tools like Blender, FLStudio. My Hobbies are Politics, Geo Politics, Alt Media, Military, Mechanical and Technical.</p>
-
-            <div class="section-title">Education</div>
-            <strong>Asia University of Taiwan</strong>
-            <p style="color: var(--text-muted); margin-top: 2px;">Freshman class of 2025 – Major: Computer Science and Information Technology</p>
-
-            <div class="section-title">Skills</div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h3>Retail worker</h3>
-                    <p>Communication skills in sales pitch and ability to connect with any customer</p>
-                </div>
-                <div class="skill-item">
-                    <h3>Computer and Programs</h3>
-                    <p>Wide range of beginner and intermediate entries on various softwares ranging from Adobe tools to popular media creation softwares like FLStudio and Blender</p>
-                </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Student Details</div>
+                <p>ID: <strong>AU114021138</strong></p>
+                <button class="btn-target" onclick="copyId()" style="margin-top: 5px;">Copy Student ID</button>
             </div>
 
-            <div class="section-title">Experience</div>
-            <p>None for now</p>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Personal Profile</div>
+                <p>Broad knowledge in hardware/software (PC components, automotive, weaponry), Blender, FLStudio. Hobbies: Politics, Military, Mechanical, Technical.</p>
+            </div>
 
-            <div class="section-title">Contact details</div>
-            <div class="contact-info">
-                <strong>Email</strong>
-                <p>temuulentt218653@gmail.com</p>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Skills Overview</div>
+                <p>Retail sales and communication.</p>
+                <p>Beginner/Intermediate in Adobe, FLStudio, Blender.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header-section">
+                <div class="name-and-title">
+                    <h1>Temuulen Baasankhuu</h1>
+                    <p class="job-title">Freshman, Computer Science and Information Technology</p>
+                </div>
+                <div class="contact-block">
+                    temuulentt218653@gmail.com<br>
+                    +976 8871 5113 (MGL)
+                </div>
+            </header>
+
+            <section class="experience-section">
+                <h2 class="section-title-main">Education</h2>
                 
-                <strong>Phone</strong>
-                <p>+976 8871 5113 (MGL)</p>
-            </div>
+                <div class="experience-entry">
+                    <div class="experience-meta">
+                        <strong>Asia University</strong>
+                        <p>Taiwan</p>
+                        <p>Class of 2025 – Present</p>
+                    </div>
+                    <div class="experience-details">
+                        <h3>Computer Science and Information Technology</h3>
+                        <ul>
+                            <li>Primary focus on technical foundations and media production software.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-            <div class="actions">
-                <button class="btn-teal" style="width: auto;" onclick="window.print()">Print / Save as PDF</button>
-                <button class="btn-outline" onclick="toggleDarkMode()">Switch dark mode</button>
-                <div style="margin-left: auto; font-size: 12px; color: var(--text-muted);">HTML resume / editable</div>
+            <section class="skills-main-section">
+                <h2 class="section-title-main">Detailed Skills</h2>
+                <ul class="skill-list">
+                    <li>Sales Pitch</li>
+                    <li>Customer Communication</li>
+                    <li>Hardware Components</li>
+                    <li>Software Tools (Adobe)</li>
+                    <li>Media Creation (Blender, FLStudio)</li>
+                </ul>
+            </section>
+
+            <section class="experience-main-section">
+                <h2 class="section-title-main">Work Experience</h2>
+                <p>None for now.</p>
+            </section>
+
+            <div class="actions-bar">
+                <button class="btn-target" onclick="window.print()">Print / Save as PDF</button>
+                <button class="btn-target" style="background-color: rgba(0,0,0,0.1); color: var(--main-text); border: 1px solid var(--accent-border);" onclick="toggleDarkMode()">Toggle dark mode</button>
             </div>
-        </div>
+        </main>
         
         <div class="footer-right">Last updated: 3/25/2026</div>
     </div>
@@ -246,7 +330,7 @@
         }
 
         function copyId() {
-            navigator.clipboard.writeText("AU114001001");
+            navigator.clipboard.writeText("AU114021138");
             alert("School number copied!");
         }
     </script>
