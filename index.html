@@ -245,6 +245,15 @@
     </style>
 </head>
 <body>
+    <audio id="bgMusic" loop>
+    <source src="music.mp4" type="audio/mp4">
+</audio>
+
+<div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+    <button class="btn-target" onclick="toggleMusic()" id="musicBtn" style="width: auto; background-color: #4c4d4f; color: white; padding: 10px; border-radius: 5px; cursor: pointer; border: 1px solid white;">
+        Play Music 🎵
+    </button>
+</div>
     <div class="resume-container">
         <aside class="sidebar">
             <div class="profile-img-container">
@@ -325,6 +334,18 @@
     </div>
 
     <script>
+        function toggleMusic() {
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicBtn');
+    
+    if (music.paused) {
+        music.play();
+        btn.innerHTML = "Pause Music ⏸️";
+    } else {
+        music.pause();
+        btn.innerHTML = "Play Music 🎵";
+    }
+}
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
