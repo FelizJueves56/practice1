@@ -5,355 +5,321 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temuulen Baasankhuu - Resume</title>
     <style>
-        /* ==============================
-           THEME AND RESET
-           Replicates the design from image_14.png
-           ============================== */
         :root {
-            --sidebar-bg: #4c4d4f; /* Matches the target sidebar */
-            --sidebar-text: #ffffff;
-            --main-bg: #ffffff;
-            --main-text: #202124;
-            --accent-border: #e0e0e0;
-            --accent-highlight: #d3d3d3; /* for headers/lines */
-        }
-
-        /* Dark mode settings for this specific layout */
-        body.dark-mode {
-            --sidebar-bg: #3c4043;
-            --main-bg: #121212;
-            --main-text: #e8eaed;
-            --accent-border: #3c4043;
+            --navy: #343d4b;
+            --yellow-border: #fccb06;
+            --sidebar-light: #e7e9eb;
+            --text-main: #333333;
+            --line-color: #9499a1;
         }
 
         body {
-            font-family: 'Times New Roman', Times, serif; /* Serifs match target */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
-            padding: 20px 0;
-            color: var(--main-text);
+            padding: 40px 0;
             display: flex;
             justify-content: center;
-            transition: background-color 0.3s;
         }
 
-        /* The main two-column grid */
+        /* Outer yellow border wrapper */
+        .resume-wrapper {
+            background-color: var(--yellow-border);
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
         .resume-container {
-            display: grid;
-            grid-template-columns: 280px 1fr; /* Fixed sidebar, flexible content */
-            width: 1000px;
-            max-width: 100%;
-            background-color: var(--main-bg);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
+            width: 850px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navy Header */
+        header {
+            background-color: var(--navy);
+            color: white;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: relative;
         }
 
-        /* ==============================
-           SIDEBAR STYLES (DARK)
-           ============================== */
-        .sidebar {
-            background-color: var(--sidebar-bg);
-            color: var(--sidebar-text);
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .header-text h1 {
+            margin: 0;
+            font-size: 42px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .profile-img-container {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%; /* Target profile is round */
+        .header-text p {
+            margin: 5px 0 0 0;
+            font-size: 18px;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Profile Image overlapping header */
+        .profile-circle {
+            width: 180px;
+            height: 180px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -90px;
+            left: 50px;
+            border: 8px solid white;
             overflow: hidden;
-            border: 4px solid var(--sidebar-text);
-            margin-bottom: 30px;
+            z-index: 10;
         }
 
-        .profile-img-container img {
+        .profile-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .sidebar-section {
-            width: 100%;
-            margin-bottom: 30px;
-            text-align: left;
+        /* Main Body Layout */
+        .content-body {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            margin-top: 20px;
         }
 
-        .sidebar-title {
+        /* Left Column (Grey) */
+        .left-col {
+            background-color: var(--sidebar-light);
+            padding: 100px 30px 40px 40px;
+        }
+
+        /* Right Column (White) */
+        .right-col {
+            padding: 40px 60px 40px 40px;
+        }
+
+        /* Section Styling */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .icon-circle {
+            background-color: var(--navy);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid var(--sidebar-text);
-            padding-bottom: 5px;
         }
 
-        .sidebar p, .sidebar li {
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: 1px;
+            color: #000;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--line-color);
+            margin: 5px 0 15px 0;
+        }
+
+        .entry {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 15px;
+            border-left: 1px solid var(--line-color);
+        }
+
+        .entry h3 {
+            margin: 0;
+            font-size: 15px;
+            color: #000;
+        }
+
+        .entry p {
             font-size: 13px;
             margin: 5px 0;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.4;
-        }
-        
-        .sidebar ul {
-            padding-left: 15px;
-            margin: 0;
+            color: #444;
         }
 
-        /* ==============================
-           MAIN CONTENT STYLES (WHITE)
-           ============================== */
-        .main-content {
-            padding: 40px 60px;
+        ul {
+            padding-left: 18px;
+            margin: 5px 0;
         }
 
-        /* Clean header matching target */
-        .header-section {
-            border-bottom: 2px solid var(--accent-highlight);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .name-and-title h1 {
-            font-size: 36px;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.1;
-        }
-
-        .name-and-title .job-title {
-            font-size: 14px;
-            color: var(--sidebar-bg); /* Use sidebar color as accent */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 5px;
-        }
-
-        .contact-block {
-            text-align: right;
-            font-size: 12px;
-            color: #5f6368;
-            line-height: 1.5;
-        }
-
-        .section-title-main {
-            font-size: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--main-text);
-        }
-
-        /* Work Experience entries */
-        .experience-entry {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-            align-items: flex-start;
-        }
-        
-        .experience-meta {
-            text-align: right;
-        }
-
-        .experience-meta strong {
-            display: block;
-            text-transform: uppercase;
+        li {
             font-size: 13px;
-        }
-        
-        .experience-meta p {
-            font-size: 12px;
-            color: #5f6368;
-            margin: 2px 0 0 0;
+            margin-bottom: 5px;
+            color: #333;
         }
 
-        .experience-details h3 {
-            font-size: 14px;
-            margin: 0 0 5px 0;
-            font-weight: bold;
-        }
-        
-        .experience-details ul {
+        .contact-info p {
             font-size: 13px;
-            line-height: 1.6;
-            padding-left: 20px;
-            margin: 0;
-            color: #202124;
-        }
-
-        /* Skill list layout matching target */
-        .skill-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            margin: 10px 0;
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill-list li {
-            background-color: #f4f6f8;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #5f6368;
-            text-transform: uppercase;
-            border: 1px solid var(--accent-border);
-        }
-
-        /* Copy/PDF buttons, kept from previous iteration */
-        .actions-bar {
-            margin-top: 40px;
-            border-top: 2px solid var(--accent-highlight);
-            padding-top: 20px;
-            display: flex;
+            align-items: center;
             gap: 10px;
         }
 
-        .btn-target {
-            background-color: var(--sidebar-bg);
-            color: #ffffff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-size: 12px;
-            text-transform: uppercase;
-            cursor: pointer;
+        /* Buttons for interaction */
+        .actions {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        /* Footer positioning */
-        .footer-right {
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            font-size: 10px;
-            color: rgba(255,255,255,0.5); /* on sidebar background */
+        .btn {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop>
+
+<div class="actions">
+    <button class="btn" onclick="window.print()">Download PDF</button>
+    <button class="btn" onclick="toggleMusic()">Music 🎵</button>
+</div>
+
+<audio id="bgMusic" loop>
     <source src="music.mp4" type="audio/mp4">
 </audio>
 
-<div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
-    <button class="btn-target" onclick="toggleMusic()" id="musicBtn" style="width: auto; background-color: #4c4d4f; color: white; padding: 10px; border-radius: 5px; cursor: pointer; border: 1px solid white;">
-        Play Music 🎵
-    </button>
-</div>
+<div class="resume-wrapper">
     <div class="resume-container">
-        <aside class="sidebar">
-            <div class="profile-img-container">
-                <img src="profile.jpg" alt="Profile Picture" class="profile-img">
-            </div>
-            
-            <div class="sidebar-section">
-                <div class="sidebar-title">Student Details</div>
-                <p>ID: <strong>AU114021138</strong></p>
-                <button class="btn-target" onclick="copyId()" style="margin-top: 5px;">Copy Student ID</button>
-            </div>
-
-            <div class="sidebar-section">
-                <div class="sidebar-title">Personal Profile</div>
-                <p>Broad knowledge in hardware/software (PC components, automotive, weaponry), Blender, FLStudio. Hobbies: Politics, Military, Mechanical, Technical.</p>
-            </div>
-
-            <div class="sidebar-section">
-                <div class="sidebar-title">Skills Overview</div>
-                <p>Retail sales and communication.</p>
-                <p>Beginner/Intermediate in Adobe, FLStudio, Blender.</p>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <header class="header-section">
-                <div class="name-and-title">
-                    <h1>Temuulen Baasankhuu</h1>
-                    <p class="job-title">Freshman, Computer Science and Information Technology</p>
-                </div>
-                <div class="contact-block">
-                    temuulentt218653@gmail.com<br>
-                    +976 8871 5113 (MGL)
-                </div>
-            </header>
-
-            <section class="experience-section">
-                <h2 class="section-title-main">Education</h2>
-                
-                <div class="experience-entry">
-                    <div class="experience-meta">
-                        <strong>Asia University</strong>
-                        <p>Taiwan</p>
-                        <p>Class of 2025 – Present</p>
-                    </div>
-                    <div class="experience-details">
-                        <h3>Computer Science and Information Technology</h3>
-                        <ul>
-                            <li>Primary focus on technical foundations and media production software.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="skills-main-section">
-                <h2 class="section-title-main">Detailed Skills</h2>
-                <ul class="skill-list">
-                    <li>Sales Pitch</li>
-                    <li>Customer Communication</li>
-                    <li>Hardware Components</li>
-                    <li>Software Tools (Adobe)</li>
-                    <li>Media Creation (Blender, FLStudio)</li>
-                </ul>
-            </section>
-
-            <section class="experience-main-section">
-                <h2 class="section-title-main">Work Experience</h2>
-                <p>None for now.</p>
-            </section>
-
-            <div class="actions-bar">
-                <button class="btn-target" onclick="window.print()">Print / Save as PDF</button>
-                <button class="btn-target" style="background-color: rgba(0,0,0,0.1); color: var(--main-text); border: 1px solid var(--accent-border);" onclick="toggleDarkMode()">Toggle dark mode</button>
-            </div>
-        </main>
         
-        <div class="footer-right">Last updated: 3/25/2026</div>
+        <header>
+            <div class="header-text">
+                <h1>Temuulen Baasankhuu</h1>
+                <p>Computer Science Student</p>
+            </div>
+            <div class="profile-circle">
+                <img src="profile.jpg" alt="Profile">
+            </div>
+        </header>
+
+        <div class="content-body">
+            <div class="left-col">
+                <section>
+                    <h2>Contact</h2>
+                    <hr>
+                    <div class="contact-info">
+                        <p>📞 +976 8871 5113</p>
+                        <p>📧 temuulentt218653@gmail.com</p>
+                        <p>📍 Taichung, Taiwan</p>
+                        <p>🆔 ID: AU114021138</p>
+                    </div>
+                </section>
+
+                <br>
+
+                <section>
+                    <h2>Personal Profile</h2>
+                    <hr>
+                    <p style="font-size: 13px; line-height: 1.5;">
+                        Broad knowledge in hardware/software maintenance, Blender, and media production. 
+                        Interested in mechanical and technical systems.
+                    </p>
+                </section>
+
+                <br>
+
+                <section>
+                    <h2>Languages</h2>
+                    <hr>
+                    <ul>
+                        <li>English (Fluent)</li>
+                        <li>Mongolian (Native)</li>
+                        <li>Mandarin (Learning)</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="right-col">
+                
+                <section>
+                    <div class="section-header">
+                        <div class="icon-circle">👤</div>
+                        <h2>Career Objective</h2>
+                    </div>
+                    <p style="font-size: 14px;">Motivated Computer Science student eager to apply technical hardware maintenance skills and media production knowledge in a dynamic environment.</p>
+                </section>
+
+                <br>
+
+                <section>
+                    <div class="section-header">
+                        <div class="icon-circle">🛠️</div>
+                        <h2>Key Skills</h2>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li><strong>Software:</strong> Adobe Suite, FLStudio, Blender, Python</li>
+                        <li><strong>Hardware:</strong> PC Component Maintenance, Thermal Management</li>
+                        <li><strong>Soft Skills:</strong> Retail Sales, Communication, Technical Troubleshooting</li>
+                    </ul>
+                </section>
+
+                <br>
+
+                <section>
+                    <div class="section-header">
+                        <div class="icon-circle">🎓</div>
+                        <h2>Education</h2>
+                    </div>
+                    <hr>
+                    <div class="entry">
+                        <h3>Asia University | Taiwan</h3>
+                        <p>B.S. in Computer Science and Information Technology</p>
+                        <p>2025 – Present</p>
+                    </div>
+                </section>
+
+                <br>
+
+                <section>
+                    <div class="section-header">
+                        <div class="icon-circle">💻</div>
+                        <h2>Academic Projects</h2>
+                    </div>
+                    <hr>
+                    <div class="entry">
+                        <h3>Hardware Maintenance Project</h3>
+                        <p>Performed full technical maintenance on a GP66 Leopard gaming laptop, including CPU/GPU repasting.</p>
+                    </div>
+                    <div class="entry">
+                        <h3>Python Game Development</h3>
+                        <p>Developed a functional Hangman game using Python to demonstrate logic and coding fundamentals.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
+</div>
 
-    <script>
-        function toggleMusic() {
-    const music = document.getElementById('bgMusic');
-    const btn = document.getElementById('musicBtn');
-    
-    if (music.paused) {
-        music.play();
-        btn.innerHTML = "Pause Music ⏸️";
-    } else {
-        music.pause();
-        btn.innerHTML = "Play Music 🎵";
+<script>
+    function toggleMusic() {
+        const music = document.getElementById('bgMusic');
+        music.paused ? music.play() : music.pause();
     }
-}
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
+</script>
 
-        function copyId() {
-            navigator.clipboard.writeText("AU114021138");
-            alert("School number copied!");
-        }
-    </script>
 </body>
 </html>
