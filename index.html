@@ -18,7 +18,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation - Sticky & Functional */
+        /* Navigation */
         nav { 
             display: flex; 
             justify-content: center; 
@@ -45,14 +45,14 @@
             text-shadow: 0 0 10px #00ffab;
         }
 
-        /* Widened Container */
+        /* Container */
         .container { 
             padding: 4rem 2rem; 
-            max-width: 1100px; /* Increased width as requested */
+            max-width: 1100px; 
             margin: auto; 
         }
 
-        /* Header Card - Flex Layout */
+        /* Header Card */
         .profile-card {
             background: #1a1a1a; 
             padding: 3rem; 
@@ -65,23 +65,23 @@
         }
 
         .profile-pic {
-            width: 140px; /* Scaled down */
+            width: 140px;
             height: 140px;
             object-fit: cover;
-            border-radius: 25px; /* Smooth corner square */
+            border-radius: 25px; 
             border: 3px solid #00ffab;
             flex-shrink: 0;
         }
 
         .title-text {
-            font-size: 2.8rem; /* Made bigger */
+            font-size: 2.5rem; 
             font-weight: bold;
             margin: 0;
-            white-space: nowrap; /* Ensures one-line delivery */
+            white-space: nowrap; 
         }
 
         .highlight-name { 
-            color: #00ffab; /* Pure green text, no background */
+            color: #00ffab; 
         }
 
         /* Content Sections */
@@ -99,12 +99,51 @@
             box-shadow: 0 0 15px rgba(0, 255, 171, 0.1);
         }
 
-        h3 { 
+        h2 { 
             margin-top: 0; 
             color: #00ffab;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             border-bottom: 1px solid #333;
             padding-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-text {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Green Dots/List Styling */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        li::before {
+            content: "•";
+            color: #00ffab;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         /* Footer */
@@ -119,9 +158,10 @@
 <body>
 
     <nav>
-        <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
     </nav>
 
@@ -134,27 +174,71 @@
             </h1>
         </div>
         
-        <div class="card" id="about">
-            <h3>Background</h3>
-            <p>[Insert bio here. Tell the story of your journey and expertise.]</p>
+        <div class="card" id="education">
+            <h2>Education</h2>
+            <h3>Asia University of Taiwan [cite: 4]</h3>
+            <p class="sub-text">Freshman class of 2025 Sep – 2029 [cite: 4]</p>
+            <ul>
+                <li>Bachelor in computer science and Information Engineering [cite: 5]</li>
+                <li>3.5/4.0 GPA [cite: 5]</li>
+            </ul>
+            <br>
+            <h3>Related Courses [cite: 6]</h3>
+            <ul>
+                <li>Linear Algebra, Calculus I, Probability and Statistics [cite: 7]</li>
+                <li>Discrete Mathematics, Advanced Computer Programming [cite: 7]</li>
+                <li>Information and Technology, Fundamental Computer Programming [cite: 7]</li>
+            </ul>
         </div>
 
         <div class="card" id="skills">
-            <h3>Technical Skills</h3>
-            <p><strong>Languages:</strong> Python, HTML, CSS, JavaScript</p>
-            <p><strong>Focus:</strong> [Your Focus Areas]</p>
+            <h2>Technical Skills [cite: 8]</h2>
+            <div class="skills-grid">
+                <div>
+                    <h3>Languages [cite: 9]</h3>
+                    <ul>
+                        <li>Python, Java, GIT, SQL, C, C++ [cite: 9]</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Frameworks & Databases [cite: 10]</h3>
+                    <ul>
+                        <li>Next.js 15 (App Router) [cite: 10]</li>
+                        <li>PostgreSQL, Prisma [cite: 10]</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Tools & Technologies [cite: 11]</h3>
+                    <ul>
+                        <li>GitHub, NymPy [cite: 11]</li>
+                        <li>Anacando, VS code [cite: 11]</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card" id="projects">
-            <h3>Featured Projects</h3>
-            <p><strong>Project Alpha</strong> - A description of your primary work.</p>
-            <p><strong>Project Beta</strong> - A description of your secondary work.</p>
+            <h2>Projects [cite: 12]</h2>
+            <h3>Restaurant POS [cite: 13]</h3>
+            <p class="sub-text">Python, HTML, Next.js 15, PostgreSQL + Prisma, Tailwind + shadcn/ui [cite: 13]</p>
+            <ul>
+                <li>Working MVP POS that utilizes Prisma, SQL, and Next.js 15 to take orders and show them to the kitchen[cite: 14].</li>
+                <li>Python and HTML for site structure with Tailwind + shadcn/ui to construct a user-friendly interface[cite: 15].</li>
+            </ul>
+        </div>
+
+        <div class="card" id="experience">
+            <h2>Work Experience [cite: 16]</h2>
+            <ul>
+                <li>None for now [cite: 17]</li>
+            </ul>
         </div>
 
         <div class="card" id="contact">
-            <h3>Connect</h3>
-            <p>Email: [Your Email]</p>
-            <p>GitHub: [Your GitHub Link]</p>
+            <h2>Connect</h2>
+            <ul>
+                <li>Email: temuulentt218653@gmail.com [cite: 2]</li>
+            </ul>
         </div>
 
     </div>
