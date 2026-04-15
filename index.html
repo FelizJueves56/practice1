@@ -3,149 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+    <title>Temuulen Baasankhuu | Portfolio</title>
     <style>
+        /* Smooth Scrolling Protocol */
         html {
-    scroll-behavior: smooth;
-}
+            scroll-behavior: smooth;
+        }
 
-/* Also, update your nav styling to handle the new <a> tags */
-nav a {
-    text-decoration: none;
-    color: #00ffab;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-        /* General Styles */
         body { 
-            background: #1a1a1a; 
+            background: #121212; 
             color: #e0e0e0; 
             font-family: 'Courier New', monospace; 
             margin: 0; 
             line-height: 1.6;
         }
 
-        /* Navigation */
+        /* Navigation - Sticky & Functional */
         nav { 
             display: flex; 
             justify-content: center; 
-            gap: 30px;
+            gap: 40px;
             padding: 1.5rem; 
-            background: #252525; 
+            background: #1a1a1a; 
             border-bottom: 2px solid #333;
             position: sticky;
             top: 0;
+            z-index: 1000;
         }
         
-        nav span {
+        nav a {
+            text-decoration: none;
             color: #00ffab;
-            cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            transition: 0.3s;
         }
 
-        nav span:hover {
-            text-decoration: underline;
+        nav a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ffab;
         }
 
-        /* Container */
+        /* Widened Container */
         .container { 
             padding: 4rem 2rem; 
-            max-width: 800px; 
+            max-width: 1100px; /* Increased width as requested */
             margin: auto; 
         }
 
-        h1 { 
-            font-size: 2.5rem; 
-            margin-bottom: 2rem;
+        /* Header Card - Flex Layout */
+        .profile-card {
+            background: #1a1a1a; 
+            padding: 3rem; 
+            border-radius: 15px; 
+            margin-bottom: 2rem; 
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
         }
 
-        .highlight { 
-            color: #00ffab; 
+        .profile-pic {
+            width: 140px; /* Scaled down */
+            height: 140px;
+            object-fit: cover;
+            border-radius: 25px; /* Smooth corner square */
+            border: 3px solid #00ffab;
+            flex-shrink: 0;
         }
 
-        /* Content Cards */
+        .title-text {
+            font-size: 2.8rem; /* Made bigger */
+            font-weight: bold;
+            margin: 0;
+            white-space: nowrap; /* Ensures one-line delivery */
+        }
+
+        .highlight-name { 
+            color: #00ffab; /* Pure green text, no background */
+        }
+
+        /* Content Sections */
         .card { 
-            background: #252525; 
-            padding: 2rem; 
+            background: #1a1a1a; 
+            padding: 2.5rem; 
             border-radius: 12px; 
             margin-bottom: 1.5rem; 
             border: 1px solid #333;
-            transition: transform 0.2s;
+            transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
             border-color: #00ffab;
+            box-shadow: 0 0 15px rgba(0, 255, 171, 0.1);
         }
 
         h3 { 
             margin-top: 0; 
             color: #00ffab;
+            font-size: 1.5rem;
             border-bottom: 1px solid #333;
             padding-bottom: 0.5rem;
-        }
-
-        ul {
-            padding-left: 1.2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            font-size: 0.8rem;
-            color: #666;
+            padding: 3rem;
+            font-size: 0.9rem;
+            color: #555;
         }
-    
     </style>
 </head>
 <body>
 
     <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-</nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-<div class="container">
-    <h1>> Hello, I'm <span class="highlight">[Name]</span></h1>
-    
-    <div class="card" id="about">
-        <h3>Background</h3>
-        <p>[Bio content...]</p>
+    <div class="container">
+        
+        <div class="profile-card">
+            <img src="image_4.png" alt="Temuulen Baasankhuu" class="profile-pic">
+            <h1 class="title-text">
+                > Hello, I'm <span class="highlight-name">Temuulen Baasankhuu</span>
+            </h1>
+        </div>
+        
+        <div class="card" id="about">
+            <h3>Background</h3>
+            <p>[Insert bio here. Tell the story of your journey and expertise.]</p>
+        </div>
+
+        <div class="card" id="skills">
+            <h3>Technical Skills</h3>
+            <p><strong>Languages:</strong> Python, HTML, CSS, JavaScript</p>
+            <p><strong>Focus:</strong> [Your Focus Areas]</p>
+        </div>
+
+        <div class="card" id="projects">
+            <h3>Featured Projects</h3>
+            <p><strong>Project Alpha</strong> - A description of your primary work.</p>
+            <p><strong>Project Beta</strong> - A description of your secondary work.</p>
+        </div>
+
+        <div class="card" id="contact">
+            <h3>Connect</h3>
+            <p>Email: [Your Email]</p>
+            <p>GitHub: [Your GitHub Link]</p>
+        </div>
+
     </div>
 
-    <div class="card" id="skills">
-        <h3>Technical Skills</h3>
-        <ul>
-            <li>HTML, CSS, JavaScript, Python</li>
-        </ul>
-    </div>
-
-    <div class="card" id="projects">
-        <h3>Featured Projects</h3>
-        <p>Project details...</p>
-    </div>
-
-    <div class="card" id="contact">
-        <h3>Connect</h3>
-        <p>Email: [Your Email]</p>
-    </div>
-</div>
     <footer>
-        &copy; 2026 [Your Name]. Built with HTML/CSS.
+        &copy; 2026 Temuulen Baasankhuu. All systems operational.
     </footer>
 
 </body>
