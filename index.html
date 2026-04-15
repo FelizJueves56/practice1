@@ -91,47 +91,59 @@
             font-size: 0.8rem;
             color: #666;
         }
+        
+        html {
+    scroll-behavior: smooth;
+}
+
+/* Also, update your nav styling to handle the new <a> tags */
+nav a {
+    text-decoration: none;
+    color: #00ffab;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
     </style>
 </head>
 <body>
 
     <nav>
-        <span>About</span>
-        <span>Projects</span>
-        <span>Skills</span>
-        <span>Contact</span>
-    </nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <div class="container">
-        <h1>> Hello, I'm <span class="highlight">[Name]</span></h1>
-        
-        <div class="card">
-            <h3>Background</h3>
-            <p>[A brief introduction about who you are and what you are currently focused on.]</p>
-        </div>
-
-        <div class="card">
-            <h3>Technical Skills</h3>
-            <ul>
-                <li><strong>Languages:</strong> HTML, CSS, JavaScript, Python</li>
-                <li><strong>Tools:</strong> Git, VS Code, [Other Tools]</li>
-                <li><strong>Concepts:</strong> [e.g., Web Development, Data Structures]</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>Featured Projects</h3>
-            <p><strong>[Project Name 1]</strong> - [Short description of the project and what it does.]</p>
-            <p><strong>[Project Name 2]</strong> - [Short description of the project and what it does.]</p>
-        </div>
-
-        <div class="card">
-            <h3>Connect</h3>
-            <p>Email: [Your Email]</p>
-            <p>GitHub: [Link to Profile]</p>
-        </div>
+<div class="container">
+    <h1>> Hello, I'm <span class="highlight">[Name]</span></h1>
+    
+    <div class="card" id="about">
+        <h3>Background</h3>
+        <p>[Bio content...]</p>
     </div>
 
+    <div class="card" id="skills">
+        <h3>Technical Skills</h3>
+        <ul>
+            <li>HTML, CSS, JavaScript, Python</li>
+        </ul>
+    </div>
+
+    <div class="card" id="projects">
+        <h3>Featured Projects</h3>
+        <p>Project details...</p>
+    </div>
+
+    <div class="card" id="contact">
+        <h3>Connect</h3>
+        <p>Email: [Your Email]</p>
+    </div>
+</div>
     <footer>
         &copy; 2026 [Your Name]. Built with HTML/CSS.
     </footer>
