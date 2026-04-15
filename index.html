@@ -3,323 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temuulen Baasankhuu - Resume</title>
+    <title>Personal Portfolio</title>
     <style>
-        :root {
-            --navy: #343d4b;
-            --yellow-border: #fccb06;
-            --sidebar-light: #e7e9eb;
-            --text-main: #333333;
-            --line-color: #9499a1;
+        /* General Styles */
+        body { 
+            background: #1a1a1a; 
+            color: #e0e0e0; 
+            font-family: 'Courier New', monospace; 
+            margin: 0; 
+            line-height: 1.6;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 40px 0;
-            display: flex;
-            justify-content: center;
+        /* Navigation */
+        nav { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px;
+            padding: 1.5rem; 
+            background: #252525; 
+            border-bottom: 2px solid #333;
+            position: sticky;
+            top: 0;
         }
-
-        /* Outer yellow border wrapper */
-        .resume-wrapper {
-            background-color: var(--yellow-border);
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .resume-container {
-            width: 850px;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Top Navy Header */
-        header {
-            background-color: var(--navy);
-            color: white;
-            padding: 40px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .header-text h1 {
-            margin: 0;
-            font-size: 42px;
-            letter-spacing: 2px;
+        
+        nav span {
+            color: #00ffab;
+            cursor: pointer;
+            font-weight: bold;
             text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
-        .header-text p {
-            margin: 5px 0 0 0;
-            font-size: 18px;
-            letter-spacing: 1px;
-            opacity: 0.9;
+        nav span:hover {
+            text-decoration: underline;
         }
 
-        /* Profile Image overlapping header */
-        .profile-circle {
-            width: 180px;
-            height: 180px;
-            background-color: #fff;
-            border-radius: 50%;
-            position: absolute;
-            bottom: -90px;
-            left: 50px;
-            border: 8px solid white;
-            overflow: hidden;
-            z-index: 10;
+        /* Container */
+        .container { 
+            padding: 4rem 2rem; 
+            max-width: 800px; 
+            margin: auto; 
         }
 
-        .profile-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 2rem;
         }
 
-        /* Main Body Layout */
-        .content-body {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            margin-top: 20px;
+        .highlight { 
+            color: #00ffab; 
         }
 
-        /* Left Column (Grey) */
-        .left-col {
-            background-color: var(--sidebar-light);
-            padding: 100px 30px 40px 40px;
+        /* Content Cards */
+        .card { 
+            background: #252525; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            margin-bottom: 1.5rem; 
+            border: 1px solid #333;
+            transition: transform 0.2s;
         }
 
-        /* Right Column (White) */
-        .right-col {
-            padding: 40px 60px 40px 40px;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffab;
         }
 
-        /* Section Styling */
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .icon-circle {
-            background-color: var(--navy);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        h2 {
-            font-size: 18px;
-            text-transform: uppercase;
-            margin: 0;
-            letter-spacing: 1px;
-            color: #000;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid var(--line-color);
-            margin: 5px 0 15px 0;
-        }
-
-        .entry {
-            margin-bottom: 25px;
-            position: relative;
-            padding-left: 15px;
-            border-left: 1px solid var(--line-color);
-        }
-
-        .entry h3 {
-            margin: 0;
-            font-size: 15px;
-            color: #000;
-        }
-
-        .entry p {
-            font-size: 13px;
-            margin: 5px 0;
-            color: #444;
+        h3 { 
+            margin-top: 0; 
+            color: #00ffab;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
         }
 
         ul {
-            padding-left: 18px;
-            margin: 5px 0;
+            padding-left: 1.2rem;
         }
 
         li {
-            font-size: 13px;
-            margin-bottom: 5px;
-            color: #333;
+            margin-bottom: 0.5rem;
         }
 
-        .contact-info p {
-            font-size: 13px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Buttons for interaction */
-        .actions {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .btn {
-            background: var(--navy);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 4px;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
 
-<div class="actions">
-    <button class="btn" onclick="window.print()">Download PDF</button>
-    <button class="btn" onclick="toggleMusic()">Music 🎵</button>
-</div>
+    <nav>
+        <span>About</span>
+        <span>Projects</span>
+        <span>Skills</span>
+        <span>Contact</span>
+    </nav>
 
-<audio id="bgMusic" loop>
-    <source src="music.mp4" type="audio/mp4">
-</audio>
-
-<div class="resume-wrapper">
-    <div class="resume-container">
+    <div class="container">
+        <h1>> Hello, I'm <span class="highlight">[Name]</span></h1>
         
-        <header>
-            <div class="header-text">
-                <h1>Temuulen Baasankhuu</h1>
-                <p>Computer Science Student</p>
-            </div>
-            <div class="profile-circle">
-                <img src="profile.jpg" alt="Profile">
-            </div>
-        </header>
+        <div class="card">
+            <h3>Background</h3>
+            <p>[A brief introduction about who you are and what you are currently focused on.]</p>
+        </div>
 
-        <div class="content-body">
-            <div class="left-col">
-                <section>
-                    <h2>Contact</h2>
-                    <hr>
-                    <div class="contact-info">
-                        <p>📞 +976 8871 5113</p>
-                        <p>📧 temuulentt218653@gmail.com</p>
-                        <p>📍 Taichung, Taiwan</p>
-                        <p>🆔 ID: AU114021138</p>
-                    </div>
-                </section>
+        <div class="card">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li><strong>Languages:</strong> HTML, CSS, JavaScript, Python</li>
+                <li><strong>Tools:</strong> Git, VS Code, [Other Tools]</li>
+                <li><strong>Concepts:</strong> [e.g., Web Development, Data Structures]</li>
+            </ul>
+        </div>
 
-                <br>
+        <div class="card">
+            <h3>Featured Projects</h3>
+            <p><strong>[Project Name 1]</strong> - [Short description of the project and what it does.]</p>
+            <p><strong>[Project Name 2]</strong> - [Short description of the project and what it does.]</p>
+        </div>
 
-                <section>
-                    <h2>Personal Profile</h2>
-                    <hr>
-                    <p style="font-size: 13px; line-height: 1.5;">
-                        Broad knowledge in hardware/software maintenance, Blender, and media production. 
-                        Interested in mechanical and technical systems.
-                    </p>
-                </section>
-
-                <br>
-
-                <section>
-                    <h2>Languages</h2>
-                    <hr>
-                    <ul>
-                        <li>English (Fluent)</li>
-                        <li>Mongolian (Native)</li>
-                        <li>Mandarin (Learning)</li>
-                    </ul>
-                </section>
-            </div>
-
-            <div class="right-col">
-                
-                <section>
-                    <div class="section-header">
-                        <div class="icon-circle">👤</div>
-                        <h2>Career Objective</h2>
-                    </div>
-                    <p style="font-size: 14px;">Motivated Computer Science student eager to apply technical hardware maintenance skills and media production knowledge in a dynamic environment.</p>
-                </section>
-
-                <br>
-
-                <section>
-                    <div class="section-header">
-                        <div class="icon-circle">🛠️</div>
-                        <h2>Key Skills</h2>
-                    </div>
-                    <hr>
-                    <ul>
-                        <li><strong>Software:</strong> Adobe Suite, FLStudio, Blender, Python</li>
-                        <li><strong>Hardware:</strong> PC Component Maintenance, Thermal Management</li>
-                        <li><strong>Soft Skills:</strong> Retail Sales, Communication, Technical Troubleshooting</li>
-                    </ul>
-                </section>
-
-                <br>
-
-                <section>
-                    <div class="section-header">
-                        <div class="icon-circle">🎓</div>
-                        <h2>Education</h2>
-                    </div>
-                    <hr>
-                    <div class="entry">
-                        <h3>Asia University | Taiwan</h3>
-                        <p>B.S. in Computer Science and Information Technology</p>
-                        <p>2025 – Present</p>
-                    </div>
-                </section>
-
-                <br>
-
-                <section>
-                    <div class="section-header">
-                        <div class="icon-circle">💻</div>
-                        <h2>Academic Projects</h2>
-                    </div>
-                    <hr>
-                    <div class="entry">
-                        <h3>Hardware Maintenance Project</h3>
-                        <p>Performed full technical maintenance on a GP66 Leopard gaming laptop, including CPU/GPU repasting.</p>
-                    </div>
-                    <div class="entry">
-                        <h3>Python Game Development</h3>
-                        <p>Developed a functional Hangman game using Python to demonstrate logic and coding fundamentals.</p>
-                    </div>
-                </section>
-            </div>
+        <div class="card">
+            <h3>Connect</h3>
+            <p>Email: [Your Email]</p>
+            <p>GitHub: [Link to Profile]</p>
         </div>
     </div>
-</div>
 
-<script>
-    function toggleMusic() {
-        const music = document.getElementById('bgMusic');
-        music.paused ? music.play() : music.pause();
-    }
-</script>
+    <footer>
+        &copy; 2026 [Your Name]. Built with HTML/CSS.
+    </footer>
 
 </body>
 </html>
