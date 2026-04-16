@@ -118,6 +118,29 @@
             font-size: 1rem;
             color: #666; 
         }
+        .id-line {
+            margin: 10px 0 0;
+            font-size: 0.9rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .copy-btn {
+            background: #333;
+            border: 1px solid #444;
+            color: #00ffab;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            border-radius: 3px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        .copy-btn:hover {
+            background: #00ffab;
+            color: #121212;
+        }
         .highlight-name { color: #00ffab; }
         .card { 
             background: #1a1a1a; 
@@ -170,7 +193,7 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <div class="download-container">
-            <button class="btn-main" onclick="toggleMenu()">Resume</button>
+            <button class="btn-main" onclick="toggleMenu()">Download Resume</button>
             <div class="download-options" id="downloadMenu">
                 <a href="Temuulen Baasankhuu7890.docx" download>Download Professional Resume (.docx)</a>
                 <button onclick="window.print()">Download Portfolio as PDF</button>
@@ -180,10 +203,14 @@
 
     <div class="container">
         <div class="profile-card">
-            <img src="Screenshot 2026-04-16 060111.png" alt="Temuulen Baasankhuu" class="profile-pic">
+            <img src="image_4.png" alt="Temuulen Baasankhuu" class="profile-pic">
             <div>
                 <h1 class="title-text">> Hello, I'm <span class="highlight-name">Temuulen Baasankhuu</span></h1>
                 <p class="welcome-text">> welcome to my personal portfolio</p>
+                <p class="id-line">
+                    University student ID: <span id="studentID">114021138</span>
+                    <button class="copy-btn" onclick="copyID()">Copy ID</button>
+                </p>
             </div>
         </div>
         
@@ -207,41 +234,41 @@
 
         <div class="card" id="education">
             <h2>Education</h2>
-            <h3>Asia University of Taiwan</h3>
-            <p style="color: #888; font-size: 0.85rem;">Freshman class of 2025 Sep – 2029</p>
+            <h3>Asia University of Taiwan [cite: 4]</h3>
+            <p style="color: #888; font-size: 0.85rem;">Freshman class of 2025 Sep – 2029 [cite: 4]</p>
             <ul>
-                <li>Bachelor in Computer Science and Information Engineering </li>
-                <li>3.5/4.0 GPA </li>
+                <li>Bachelor in Computer Science and Information Engineering [cite: 5]</li>
+                <li>3.5/4.0 GPA [cite: 5]</li>
             </ul>
             <br>
             <h3>Related courses</h3>
-            <p>Linear Algebra, Calculus I, Probability and Statistics, Discrete Mathematics, Advanced Computer Programming, Information and Technology, Fundamental Computer Programming</p>
+            <p>Linear Algebra, Calculus I, Probability and Statistics, Discrete Mathematics, Advanced Computer Programming, Information and Technology, Fundamental Computer Programming [cite: 7]</p>
         </div>
 
         <div class="card" id="skills">
             <h2>Technical skills</h2>
             <ul>
-                <li><strong>Languages:</strong> Python, Java, GIT, SQL, C, C++</li>
-                <li><strong>Frameworks/DB:</strong> Next.js 15 (App Router), PostgreSQL, Prisma</li>
-                <li><strong>Tools:</strong> GitHub, NumPy, Anaconda, VS code</li>
+                <li><strong>Languages:</strong> Python, Java, GIT, SQL, C, C++ [cite: 9]</li>
+                <li><strong>Frameworks/DB:</strong> Next.js 15 (App Router), PostgreSQL, Prisma [cite: 10]</li>
+                <li><strong>Tools:</strong> GitHub, NumPy, Anaconda, VS code [cite: 11]</li>
             </ul>
         </div>
 
         <div class="card" id="projects">
             <h2>Projects</h2>
-            <h3>Restaurant POS | Python, HTML, Next.js 15, PostgreSQL + Prisma, Tailwind + shadcn/ui</h3>
+            <h3>Restaurant POS | Python, HTML, Next.js 15, PostgreSQL + Prisma, Tailwind + shadcn/ui [cite: 13]</h3>
             <ul>
-                <li>Working MVP POS utilizing Prisma, SQL, and Next.js 15 for order management.</li>
-                <li>Constructed a user-friendly interface using Tailwind and shadcn/ui.</li>
+                <li>Working MVP POS utilizing Prisma, SQL, and Next.js 15 for order management[cite: 14].</li>
+                <li>Constructed a user-friendly interface using Tailwind and shadcn/ui[cite: 15].</li>
             </ul>
         </div>
 
         <div class="card" id="contact">
             <h2>Contact's</h2>
             <ul class="contact-links">
-                <li>Gmail: <a href="mailto:temuulentt218653@gmail.com">temuulentt218653@gmail.com</a> </li>
-                <li>GitHub: <a href="https://github.com/FelizJueves56" target="_blank">FelizJueves56</a></li>
-                <li>LinkedIn: <a href="https://www.linkedin.com/in/temuulen-baasankhuu-96623b3a7/" target="_blank">Temuulen Baasankhuu</a></li>
+                <li>Gmail: <a href="mailto:temuulentt218653@gmail.com">temuulentt218653@gmail.com</a> [cite: 2]</li>
+                <li>GitHub: <a href="https://github.com/FelizJueves56" target="_blank">FelizJueves56</a> [cite: 2]</li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/temuulen-baasankhuu-96623b3a7/" target="_blank">Temuulen Baasankhuu</a> [cite: 2]</li>
             </ul>
         </div>
     </div>
@@ -251,6 +278,14 @@
             const menu = document.getElementById("downloadMenu");
             menu.style.display = (menu.style.display === "block") ? "none" : "block";
         }
+
+        function copyID() {
+            const id = document.getElementById("studentID").innerText;
+            navigator.clipboard.writeText(id).then(() => {
+                alert("ID copied to clipboard!");
+            });
+        }
+
         window.onclick = (e) => {
             if (!e.target.matches('.btn-main')) {
                 const menu = document.getElementById("downloadMenu");
