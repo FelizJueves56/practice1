@@ -92,6 +92,7 @@
             margin-bottom: 1.5rem; 
             border: 1px solid #333;
             transition: 0.3s;
+            scroll-margin-top: 100px; /* This fixes the sticky header overlap issue */
         }
 
         .card:hover {
@@ -160,6 +161,7 @@
 <body>
 
     <nav>
+        <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
@@ -176,6 +178,11 @@
             </h1>
         </div>
         
+        <div class="card" id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm a Mongolian freshman who's majoring CS and SWE in Taiwan, Asia University. I offer plenty experience in Claud coding with Prisma and build an app or site that that utilizes .NET. Java script and object oriented programming for simple program that does varies small tasks like calculators, auto mouse clicker...all inside the exe.</p>
+        </div>
+
         <div class="card" id="education">
             <h2>Education</h2>
             <h3>University - Asia University of Taiwan</h3>
@@ -215,7 +222,7 @@
         </div>
 
         <div class="card" id="contact">
-            <h2>Connect</h2>
+            <h2>Contact's</h2>
             <ul>
                 <li>Gamil: temuulentt218653@gmail.com</li>
             </ul>
@@ -224,7 +231,7 @@
     </div>
 
     <footer>
-        &copy; 2026 Temuulen Baasankhuu. All systems operational.
+        
     </footer>
 
 </body>
